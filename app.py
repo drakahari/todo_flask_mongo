@@ -8,8 +8,29 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 # Instantiate the Flask class by creating a flask application
 app = Flask(__name__)
-# Create the mongodb client
-client = MongoClient('localhost', 27017)
+# Create the mongodb client (this code comes from my mongodb account connection app strings)
+import os
+
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
+
+
+##uri = environment variable to suppress username and pw
+uri = os.environ['DB_Mongo_string']
+
+
+
+# Create a new client and connect to the server
+client = MongoClient(uri, server_api=ServerApi('1'))
+
+# Send a ping to confirm a successful connection
+try:
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
+  # Only for local testing so have turned off
+# client = MongoClient('localhost', 27017)
 # Get and Post Route
 @app.route("/", methods=('GET', 'POST'))
 def index():
@@ -29,4 +50,4 @@ db = client.flask_database # creating your flask database using your mongo clien
 todos = db.todos # creating a collection called "todos"
 # The dunder if __name__ code block
 if __name__ == "__main__":
-    app.run(debug=True) #running your server on development mode, setting debug to True
+    app.run(host='0.0.0.0',debug=True) #running your server on development mode, setting debug to True

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>MongoDB Flask App</title>
-    <link rel="stylesheet" href="static/styles.css">
+    <title>Drakahari Careers Sample Flask App</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
 </head>
 <body>
-    <h1>MongoDB Flask App</h1>
+    <h1>Drakahari Careers Sample Flask App</h1>
    <div class="content">
         <form method="POST">
             <p>
@@ -23,7 +23,7 @@
                 name="degree"
                 required
                 type="radio"
-                value="important">
+                value="Important">
                 <label for="degree-0">Important</label>
             </p>
             <p>
@@ -32,8 +32,8 @@
                 name="degree"
                 required
                 type="radio"
-                value="unimportant">
-                <label for="degree-1">Unimportant</label>
+                value="Not Important">
+                <label for="degree-1">Not important</label>
             </p>
             <button type="submit">Submit</button>
         </form>

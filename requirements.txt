@@ -3,3 +3,5 @@ gunicorn
 sqlalchemy
 pymysql
 flask_httpauth
+bson
+pymongo
